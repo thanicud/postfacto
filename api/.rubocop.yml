@@ -59,3 +59,9 @@ Layout/FirstParameterIndentation:
 
 Layout/MultilineMethodCallBraceLayout:
   Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Layout/AlignHash:
+  Enabled: false
