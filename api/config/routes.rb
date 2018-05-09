@@ -57,4 +57,7 @@ Rails.application.routes.draw do
       post 'transitions', controller: 'transitions'
     end
   end
+
+  get '/' => 'pages#app'
+  get '/*path' => 'pages#app'
 end
