@@ -3,7 +3,6 @@
 pushd web
   NODE_ENV=production gulp assets
   gulp package
-  cp ../deployment/pws/config/config.js package
 popd
 
 cp web/package/index.html api/app/views/pages/index.html
