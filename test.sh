@@ -2,14 +2,14 @@
 
 set -e
 
-# pushd api
-#   bundle exec rake db:create db:migrate
-#   bundle exec rake
-# popd
+pushd api
+  bundle exec rake db:create db:migrate
+  bundle exec rake
+popd
 
-# pushd web
-#   gulp spec-app
-# popd
+pushd web
+  gulp spec-app
+popd
 
 ./integrate-web-into-api.sh
 
@@ -21,7 +21,9 @@ pushd web
 popd
 
 pushd api
-  USE_MOCK_GOOGLE=true bundle exec rails server -e test &
+  bundle exec rake db:create db:migrate db:test:prepare
+  RAILS_ENV=test bundle exec rake db:seed
+  GOOGLE_AUTH_ENDPOINT=http://localhost:3100/auth bundle exec rails server -e test &
   RAILS_PID=$!
   trap 'kill -9 $RAILS_PID' EXIT
   sleep 10
