@@ -2,16 +2,16 @@
 
 set -e
 
-pushd api
-  bundle exec rake db:create db:migrate
-  bundle exec rake
-popd
-
-pushd web
-  gulp spec-app
-popd
-
-./integrate-web-into-api.sh
+# pushd api
+#   bundle exec rake db:create db:migrate
+#   bundle exec rake
+# popd
+#
+# pushd web
+#   gulp spec-app
+# popd
+#
+# ./integrate
 
 pushd web
   gulp mock-google-auth-server &

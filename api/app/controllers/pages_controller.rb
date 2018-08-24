@@ -30,6 +30,11 @@
 #
 class PagesController < ApplicationController
   def app
+    @config = {
+      mock_google_auth: true,
+      websocket_url: Rails.application.config.action_cable.mount_path
+    }
+
     render :index
   end
 end
